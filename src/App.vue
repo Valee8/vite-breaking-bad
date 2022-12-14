@@ -1,29 +1,52 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import axios from 'axios';
+import AppMain from './components/AppMain.vue'
+import AppHeader from './components/AppHeader.vue'
+
+
+import { store } from './store.js';
+
+export default {
+  name: "App",
+  components: {
+    AppHeader,
+    AppMain
+  },
+  data() {
+    return {
+      store,
+    }
+  },
+  methods: {
+    getCharacters() {
+      axios
+        .get(store.apiURL)
+        .then(res => {
+          store.characterList = res.data.results;
+        })
+        .catch(error => {
+          console.log("Errori: ", error);
+        });
+    }
+  },
+  mounted() {
+    this.getCharacters();
+  }
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+
+  <AppHeader />
+
+  <main>
+
+    <AppMain />
+
+  </main>
+
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style lang="scss">
+@use './styles/general.scss' as *;
 </style>
