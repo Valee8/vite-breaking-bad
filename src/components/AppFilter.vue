@@ -1,15 +1,9 @@
 <script>
 
-import NumberOfCharacters from './NumberOfCharacters.vue'
-
-
 import { store } from '../store';
 
 export default {
     name: "AppFilter",
-    components: {
-        NumberOfCharacters
-    },
     data() {
         return {
             store,
@@ -35,10 +29,8 @@ export default {
 <template>
 
     <div class="container">
-        <NumberOfCharacters />
-
         <select v-model="store.select" @click="$emit('filter')">
-            <option disabled value="">Scegli</option>
+            <option disabled value="">Select category</option>
             <option v-for="(option, index) in options" :value="option.value" :key="index">{{ option.value }}</option>
         </select>
     </div>
@@ -47,4 +39,10 @@ export default {
 
 <style lang="scss">
 @use '../styles/general.scss' as *;
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 20px;
+}
 </style>

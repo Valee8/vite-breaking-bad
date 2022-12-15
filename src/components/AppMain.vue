@@ -1,6 +1,8 @@
 <script>
 
 import SingleCharacter from './SingleCharacter.vue'
+import NumberOfCharacters from './NumberOfCharacters.vue'
+
 
 import { store } from '../store.js'
 
@@ -8,6 +10,7 @@ export default {
     name: "AppMain",
     components: {
         SingleCharacter,
+        NumberOfCharacters
     },
     data() {
         return {
@@ -21,6 +24,10 @@ export default {
 <template>
 
     <section class="container">
+        <div class="numbers-characters">
+            <NumberOfCharacters v-if="store.select != ''" />
+        </div>
+
         <div v-for="character in store.characterList" :key="character.id" class="card">
             <SingleCharacter :info="character" />
         </div>
@@ -47,5 +54,10 @@ export default {
         text-align: center;
         color: #fff;
     }
+
+    .numbers-characters {
+        width: 100%;
+    }
+
 }
 </style>
