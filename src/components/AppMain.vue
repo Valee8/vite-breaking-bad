@@ -41,10 +41,7 @@ export default {
 .container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1024px;
-    margin: 0 auto;
     background-color: #fff;
-    padding: 20px;
 
     .card {
         width: calc(20% - 20px);

@@ -26,9 +26,4 @@ export default {
 
 <style lang="scss">
 @use '../styles/general.scss' as *;
-
-.container {
-    max-width: 1024px;
-    margin: 0 auto;
-}
 </style>
