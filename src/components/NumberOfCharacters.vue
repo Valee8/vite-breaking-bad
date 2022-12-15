@@ -15,13 +15,20 @@ export default {
 
 <template>
 
-    <h1>
-        {{ store.characterList.length }}
-    </h1>
+    <section class="container">
+        <h2>
+            Found {{ store.characterList.length }} characters
+        </h2>
+    </section>
 
 </template>
 
 
 <style lang="scss">
 @use '../styles/general.scss' as *;
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+}
 </style>
