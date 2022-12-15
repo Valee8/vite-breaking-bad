@@ -5,7 +5,7 @@ import SingleCharacter from './SingleCharacter.vue'
 import { store } from '../store.js'
 
 export default {
-    name: "CharactersList",
+    name: "AppMain",
     components: {
         SingleCharacter,
     },
@@ -29,6 +29,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/variables' as *;
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -40,7 +42,7 @@ export default {
     .card {
         width: calc(100% / 5 - 20px);
         margin: 10px;
-        background-color: #2E3A46;
+        background-color: $color-primary;
         padding: 10px;
         text-align: center;
         color: #fff;
