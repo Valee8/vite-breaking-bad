@@ -40,7 +40,7 @@ export default {
     padding: 20px;
 
     .card {
-        width: calc(100% / 5 - 20px);
+        width: calc(20% - 20px);
         margin: 10px;
         background-color: $color-primary;
         padding: 10px;
