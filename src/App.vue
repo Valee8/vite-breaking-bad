@@ -2,6 +2,7 @@
 import axios from 'axios';
 import AppMain from './components/AppMain.vue'
 import AppHeader from './components/AppHeader.vue'
+import AppFilter from './components/AppFilter.vue'
 
 
 import { store } from './store.js';
@@ -10,7 +11,8 @@ export default {
   name: "App",
   components: {
     AppHeader,
-    AppMain
+    AppMain,
+    AppFilter
   },
   data() {
     return {
@@ -19,8 +21,18 @@ export default {
   },
   methods: {
     getCharacters() {
+
+      let myUrl = store.apiURL;
+
+      if (store.select != "") {
+        myUrl += `?${store.ApiNameParameter}=${store.select}`;
+      }
+      else if (store.select === "") {
+        this.$emit('filter');
+      }
+
       axios
-        .get(store.apiURL)
+        .get(myUrl)
         .then(res => {
           store.characterList = res.data.results;
         })
@@ -40,6 +52,8 @@ export default {
   <AppHeader />
 
   <main>
+
+    <AppFilter @filter="getCharacters" />
 
     <AppMain />
 
