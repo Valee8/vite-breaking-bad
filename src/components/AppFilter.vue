@@ -9,16 +9,29 @@ export default {
             store,
             options: [
                 {
-                    value: ""
+                    value: "",
+                    disabled: true,
+                    text: "Select category"
                 },
                 {
-                    value: "alive"
+                    value: "",
+                    disabled: false,
+                    text: ""
                 },
                 {
-                    value: "dead"
+                    value: "alive",
+                    disabled: false,
+                    text: "alive"
                 },
                 {
-                    value: "unknown"
+                    value: "dead",
+                    disabled: false,
+                    text: "dead"
+                },
+                {
+                    value: "unknown",
+                    disabled: false,
+                    text: "unknown"
                 }
             ]
         }
@@ -30,8 +43,9 @@ export default {
 
     <div class="container">
         <select v-model="store.select" @click="$emit('filter')">
-            <option disabled value="">Select category</option>
-            <option v-for="(option, index) in options" :value="option.value" :key="index">{{ option.value }}</option>
+            <option :disabled="option.disabled" v-for="(option, index) in options" :value="option.value" :key="index">{{
+                    option.text
+            }}</option>
         </select>
     </div>
 
