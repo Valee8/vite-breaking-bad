@@ -42,7 +42,7 @@ export default {
 <template>
 
     <div class="container">
-        <select v-model="store.select" @click="$emit('filter')">
+        <select v-model="store.select" @change="$emit('filter')">
             <option :disabled="option.disabled" v-for="(option, index) in options" :value="option.value" :key="index">{{
                     option.text
             }}</option>
